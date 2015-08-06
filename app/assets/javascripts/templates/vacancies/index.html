@@ -1,0 +1,32 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="page-header">
+    <a ui-sref="vacanciesNew" class="pull-right btn btn-primary">Add vacancy</a>
+    <h1 >Vacancies</h1>
+  </div>
+
+  <div ng-repeat="vacancy in vacancies">
+    <div class="btn-group pull-right " role="group" >
+      <a ui-sref="vacancy({vacancy_id: vacancy.id})" class="btn btn-default btn-sm">View</a>
+      <a ui-sref="vacancyEdit({vacancy_id: vacancy.id})"  class="btn btn-default btn-sm">Edit</a>
+      <a ng-click="deleteVacancy(vacancy)" class="btn btn-danger btn-sm">Delete</a>
+    </div>    
+    <h4><a ui-sref="vacancy({vacancy_id: vacancy.id})" >{{vacancy.name}}</a></h4>
+
+    <p>
+      From {{vacancy.created_at | moment}}
+      to {{vacancy.expire_at | moment}}
+    </p>
+    <p>
+      Salary: {{vacancy.salary}}
+    </p>
+    <p>
+      Contacts: {{vacancy.contacts}}
+    </p>
+    <p ng-show="vacancy.skills.length > 0">
+      Skills: 
+      <span ng-repeat="skill in vacancy.skills"><span class="label label-primary">{{skill.name}}</span> </span>
+    </p>       
+    <hr>
+  </div>
+
+</div>  

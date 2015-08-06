@@ -1,0 +1,55 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="page-header">
+    <h1 >New worker</h1>
+  </div>
+  
+  <form  ng-submit="createWorker()">
+    <div class="form-group" ng-class="{'has-error': error.data.name}" >
+      <label  class="control-label" for="name">Name</label>
+      <input type="text" ng-model="worker.name" class="form-control" id="name" />
+      <div ng-show="error.data.name">
+        <p class="help-block" ng-repeat="field_error in error.data.name">Name {{field_error}}</p>
+      </div>      
+    </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" ng-model="worker.status" name="status" value="active">
+        I am now looking for a job.
+      </label>
+    </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" ng-model="worker.status" name="status" value="inactive">
+        I'm not looking for a job.
+      </label>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': error.data.salary}" >
+      <label  class="control-label" for="salary">Salary</label>
+      <input type="text" ng-model="worker.salary" class="form-control" id="salary" />
+      <div ng-show="error.data.salary">
+        <p class="help-block" ng-repeat="field_error in error.data.salary">Salary {{field_error}}</p>
+      </div>         
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': error.data.contacts}">
+      <label  class="control-label" for="contacts">Contacts</label>
+      <input type="text" ng-model="worker.contacts" class="form-control" id="contacts" />
+      <div ng-show="error.data.contacts">
+        <p class="help-block" ng-repeat="field_error in error.data.contacts">Contacts {{field_error}}</p>
+      </div>       
+    </div>
+
+    <div class="form-group" >
+      <tags-input ng-model="worker.skills" add-on-paste="true"  display-property="name"  placeholder="Add a skill">
+        <auto-complete source="skills"></auto-complete>
+      </tags-input>
+    </div>    
+
+    <button type="submit" class="btn btn-default">Create</button>
+  </form>
+
+</div>  
+

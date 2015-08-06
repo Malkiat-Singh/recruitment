@@ -1,0 +1,17 @@
+source 'https://rubygems.org'
+
+gem 'rails', '4.2.1'
+gem 'rails-api'
+gem 'pg'
+gem 'jquery-rails'
+gem 'rspec',       '~> 3.0.0'
+gem 'rspec-rails', '~> 3.0.0'
+gem 'factory_girl'
+gem 'factory_girl_rails'
+gem 'database_cleaner'
+gem 'factory_girl_rspec'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'active_model_serializers', github: "rails-api/active_model_serializers"
+gem 'angular-rails-templates'
+gem 'bower-rails'
+gem 'sprockets'

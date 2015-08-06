@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: recruitment_development
+  pool: 5
+  username: Rustam
+  password: 
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: recruitment_test
+  pool: 5
+  username: Rustam
+  password: 
+  host: localhost

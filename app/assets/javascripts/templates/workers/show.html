@@ -1,0 +1,72 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="page-header">
+    <h1>{{worker.name}}</h1>
+  </div>
+
+  <div class="btn-group pull-right " role="group" >
+    <a ui-sref="workerEdit({worker_id: worker.id})" class="btn btn-default btn-sm">Edit</a>
+    <a ng-click="deleteWorker()" class="btn btn-danger btn-sm">Delete</a>
+  </div>    
+
+  <p>
+    Status: 
+    <span ng-switch="worker.status">
+        <span ng-switch-when="active">Looking for a job.</span>
+        <span ng-switch-when="inactive">Not looking for a job.</span>
+    </span>
+
+  </p>
+  <p>
+    Salary: {{worker.salary}}
+  </p>
+  <p>
+    Contacts: {{worker.contacts}}
+  </p>
+  <p ng-show="worker.skills.length > 0">
+    Skills: 
+    <span ng-repeat="skill in worker.skills"><span class="label label-primary">{{skill.name}}</span> </span>
+  </p>
+
+  <hr>  
+
+  <div ng-show="vacancies.length > 0" >
+
+    <div class="btn-group pull-right" role="group" >
+      <button class="btn btn-primary" ng-class="{active: strictly}" ng-click="toggleView()">Strictly</button>
+      <button class="btn btn-primary" ng-class="{active: !strictly}" ng-click="toggleView()">Partially</button>
+    </div>
+
+    <h3>Vacancies for this worker:</h3>
+
+    <hr>  
+
+    <div ng-repeat="vacancy in vacancies ">
+
+      <div class="btn-group pull-right " role="group" >
+        <a ui-sref="vacancy({vacancy_id: vacancy.id})" class="btn btn-default btn-sm">View</a>
+        <a ui-sref="vacancyEdit({vacancy_id: vacancy.id})"  class="btn btn-default btn-sm">Edit</a>
+        <a ng-click="deleteVacancy(vacancy)" class="btn btn-danger btn-sm">Delete</a>
+      </div>    
+
+      <h4><a ui-sref="vacancy({vacancy_id: vacancy.id})" >{{vacancy.name}}</a></h4>
+
+      <p>
+        From {{vacancy.created_at | moment}}
+        to {{vacancy.expire_at | moment}}
+      </p>
+      <p>
+        Salary: {{vacancy.salary}}
+      </p>
+      <p>
+        Contacts: {{vacancy.contacts}}
+      </p>
+      <p ng-show="vacancy.skills.length > 0">
+        Skills: 
+        <span ng-repeat="skill in vacancy.skills"><span class="label label-primary">{{skill.name}}</span> </span>
+      </p>       
+      <hr>
+    </div>
+
+  </div>
+
+</div>  
